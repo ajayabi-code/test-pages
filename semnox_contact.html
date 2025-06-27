@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            min-height: 700px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact Us</h1>
+
+    <iframe
+        id="contactFormIframe"
+        src="https://uat-semnox-o16ee.p7devs.com/contact_form"
+        scrolling="no"
+        frameborder="0">
+    </iframe>
+
+    <script>
+        const iframe = document.getElementById('contactFormIframe');
+        console.log("Parent URL:", window.location.href);
+
+        iframe.addEventListener('load', function () {
+            iframe.contentWindow.postMessage({
+                parentUrl: window.location.href
+            }, 'https://uat-semnox-o16ee.p7devs.com');
+        });
+    </script>
+</body>
+</html>
+
